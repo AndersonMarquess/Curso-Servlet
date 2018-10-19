@@ -1,6 +1,6 @@
 
 <%
-	String nomeEmpresa = "Alura";
+	String nomeEmpresa = (String) request.getAttribute("nomeEmpresa");
 	System.out.println("Funciona igual ao @() no ASP.NET "+nomeEmpresa);
 %>
 
@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Primeiro JSP</title>
 </head>
 <body>
 	<label>Cadastro da empresa: <% out.print(nomeEmpresa); %> efetuado com sucesso.</label>
