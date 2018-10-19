@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.andersonmarques.DAO.EmpresaDAO;
+import com.andersonmarques.models.Empresa;
+
 /**
  * Servlet implementation class NovaEmpresa
  */
@@ -16,11 +19,19 @@ public class NovaEmpresa extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	@Override
-	protected void service(HttpServletRequest arg0, HttpServletResponse arg1) throws IOException {
+	protected void doPost(HttpServletRequest arg0, HttpServletResponse arg1) throws IOException {
 		System.out.println("Fazendo o cadastro de uma nova empresa");
 		PrintWriter out = arg1.getWriter();
-		
 		String nomeEmpresa = arg0.getParameter("nome");
+		
+		Empresa emp = new Empresa();
+		emp.setNome(nomeEmpresa);
+		
+		EmpresaDAO empDAO = new EmpresaDAO();
+		empDAO.adicionar(emp);
+		
+		
 		out.println("Cadastro da empresa: "+nomeEmpresa+" efetuado com sucesso.");
 	}
+	
 }
