@@ -21,7 +21,6 @@ public class NovaEmpresa extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest arg0, HttpServletResponse arg1) throws IOException {
 		System.out.println("Fazendo o cadastro de uma nova empresa");
-		PrintWriter out = arg1.getWriter();
 		String nomeEmpresa = arg0.getParameter("nome");
 		
 		Empresa emp = new Empresa();
@@ -29,9 +28,6 @@ public class NovaEmpresa extends HttpServlet {
 		
 		EmpresaDAO empDAO = new EmpresaDAO();
 		empDAO.adicionar(emp);
-		
-		
-		out.println("Cadastro da empresa: "+nomeEmpresa+" efetuado com sucesso.");
 	}
 	
 }
