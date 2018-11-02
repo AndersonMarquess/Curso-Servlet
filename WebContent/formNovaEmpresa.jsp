@@ -13,6 +13,8 @@
 
 	<form action="${ linkNovaEmpresa }" method="POST">
 		Nome: <input name="nome" type="text" />
+		<br/>
+		Data Abertura: <input name="data" type="text" />
 		<button type="submit">Cadastrar</button>
 	</form>
 

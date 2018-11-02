@@ -1,6 +1,8 @@
 package com.andersonmarques.controllers;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,9 +25,17 @@ public class NovaEmpresa extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		System.out.println("Fazendo o cadastro de uma nova empresa");
 		String nomeEmpresa = request.getParameter("nome");
+		String dataAbertura = request.getParameter("data");
 		
 		Empresa emp = new Empresa();
 		emp.setNome(nomeEmpresa);
+
+		try {
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			emp.setDataAbertura(sdf.parse(dataAbertura));
+		} catch (ParseException e) {
+			throw new ServletException(e);
+		}
 		
 		EmpresaDAO empDAO = new EmpresaDAO();
 		empDAO.adicionar(emp);
