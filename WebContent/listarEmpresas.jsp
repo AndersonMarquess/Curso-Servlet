@@ -4,6 +4,7 @@
 
 <%-- <c:url value="/remover"/> igual /Curso-Servlet/remover --%>
 <c:url value="/remover" var="linkRemoverEmp"/>
+<c:url value="/editar" var="linkEditarEmp" />
 
 <!DOCTYPE html>
 <html>
@@ -28,6 +29,8 @@
 			<!-- chama o emp.getNome() -->
 			<li>
 				${ emp.nome }- <fmt:formatDate value="${ emp.dataAbertura }" pattern="dd/MM/yyyy" />
+				
+				<a href="${ linkEditarEmp }?id=${emp.id}" type="button">Editar</a>
 				
 				<form action="${ linkRemoverEmp }" method="post">
 					<input type="hidden" name="id" value="${ emp.id }">

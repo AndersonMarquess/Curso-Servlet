@@ -11,7 +11,7 @@ public class EmpresaDAO {
 	
 	private static List<Empresa> empresas = new ArrayList<>();
 	
-	//É inicializado automaticamente no carregamento da classe
+	//É inicializado uma vez automaticamente no carregamento da classe
 	static {
 		Empresa e1 = new Empresa();
 		e1.setNome("Empresa 001");
@@ -33,6 +33,15 @@ public class EmpresaDAO {
 
 	public void removerEmpresaComId(int id) {
 		empresas.removeIf(e -> e.getId().equals(id));		
+	}
+
+	public Empresa findEmpresaById(int id) {
+		return empresas.stream().filter(e -> e.getId().equals(id)).findFirst().get();
+	}
+
+	public void atualizar(Empresa emp) {
+		removerEmpresaComId(emp.getId());
+		adicionar(emp);
 	}
 
 }

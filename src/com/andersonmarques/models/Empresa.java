@@ -1,5 +1,6 @@
 package com.andersonmarques.models;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Empresa {
@@ -36,5 +37,12 @@ public class Empresa {
 	
 	public void setDataAbertura(Date dataAbertura) {
 		this.dataAbertura = dataAbertura;
+	}
+	
+	public String getDataBrowser() {
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		String data = sdf.format(dataAbertura);
+				
+		return data;
 	}
 }
