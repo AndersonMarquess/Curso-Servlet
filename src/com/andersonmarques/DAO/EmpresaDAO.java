@@ -14,11 +14,9 @@ public class EmpresaDAO {
 	//É inicializado automaticamente no carregamento da classe
 	static {
 		Empresa e1 = new Empresa();
-//		e1.setId(1);
 		e1.setNome("Empresa 001");
 		e1.setDataAbertura(new Date());
 		Empresa e2 = new Empresa();
-//		e2.setId(2);
 		e2.setNome("Empresa 002");
 		e2.setDataAbertura(new Date());
 		empresas.addAll(Arrays.asList(e1, e2));
@@ -31,6 +29,10 @@ public class EmpresaDAO {
 	
 	public List<Empresa> getEmpresa(){
 		return EmpresaDAO.empresas;
+	}
+
+	public void removerEmpresaComId(int id) {
+		empresas.removeIf(e -> e.getId().equals(id));		
 	}
 
 }
