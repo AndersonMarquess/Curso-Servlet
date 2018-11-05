@@ -8,7 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns="/oi")
+//Mapeamento duplo
+@WebServlet(urlPatterns= {"/oi", "/ola"})
 public class OiMundo extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 

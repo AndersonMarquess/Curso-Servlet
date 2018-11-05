@@ -9,4 +9,15 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  <!-- Mapeamento manual -->
+  <servlet>
+  	<servlet-name>OiMundo</servlet-name>
+  	<servlet-class>com.andersonmarques.controllers.OiMundo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>OiMundo</servlet-name>
+  	<url-pattern>/oiXML</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
