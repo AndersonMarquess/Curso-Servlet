@@ -22,12 +22,13 @@ public class ListarEmpresas extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		EmpresaDAO empDAO = new EmpresaDAO();
 		List<Empresa> empresas = empDAO.getEmpresa();
 		
 		empresas.forEach(e -> System.out.println(e.getNome()));
 
+		//Chama o JSP
 		RequestDispatcher rDispatcher = req.getRequestDispatcher("/listarEmpresas.jsp");
 		req.setAttribute("empresas", empresas);
 		rDispatcher.forward(req, resp);

@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,11 +39,7 @@ public class NovaEmpresa extends HttpServlet {
 		EmpresaDAO empDAO = new EmpresaDAO();
 		empDAO.adicionar(emp);
 		
-		//Chama a página JSP
-		RequestDispatcher rDispatcher = request.getRequestDispatcher("/novaEmpresaCriada.jsp");
-		//atributo de chave valor
-		request.setAttribute("nomeEmpresa", emp.getNome());
-		rDispatcher.forward(request, response);
+		//Redireciona para o recursos /ListarEmpresas
+		response.sendRedirect("ListarEmpresas");
 	}
-	
 }

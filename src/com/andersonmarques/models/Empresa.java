@@ -4,9 +4,15 @@ import java.util.Date;
 
 public class Empresa {
 	
+	private static int index;
+	
 	private Integer id;
 	private String nome;
 	private Date dataAbertura;
+	
+	public Empresa() {
+		id = index++;
+	}
 	
 	public Integer getId() {
 		return id;
