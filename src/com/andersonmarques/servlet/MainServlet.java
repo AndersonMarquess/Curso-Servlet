@@ -12,16 +12,18 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class MainServlet
  */
-@WebServlet("/MainServlet")
+@WebServlet("/")
 public class MainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("Chegou na "+this.getServletName());
+		
 		String acao = request.getParameter("acao");
 		
 		//Instância a classe pelo Full Qualified Name
-		String nomeDaClasse = "com.andersonmarques."+acao;
+		String nomeDaClasse = "com.andersonmarques.controllers."+acao;
 		Acao classeInstanciada;
 		try {
 			Class<?> classe = Class.forName(nomeDaClasse);
@@ -30,14 +32,18 @@ public class MainServlet extends HttpServlet {
 			throw new ServletException(e);
 		}
 		
+		//Recebe o tipo da operação{ forward ou redirect } e a página jsp.
+		String result = classeInstanciada.executar(request, response);
+		String[] tipoEJsp = result.split(":");
 		
-		String nome = classeInstanciada.executar(request, response);
-		String[] operacao = nome.split(":");
+		String operacao = tipoEJsp[0]; 
+		String jsp = "WEB-INF/view/" + tipoEJsp[1];
 		
-		if(operacao[0].equals("forward")) {
-			RequestDispatcher rD = request.getRequestDispatcher("WEB-INF/view/" + operacao[1]);
+		if(operacao.equals("forward")) {
+			RequestDispatcher rD = request.getRequestDispatcher(jsp);
 			rD.forward(request, response);
+		}else {
+			response.sendRedirect(jsp);
 		}
-		response.sendRedirect("WEB-INF/view/" + operacao[1]);
 	}
 }
