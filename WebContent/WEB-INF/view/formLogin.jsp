@@ -10,11 +10,18 @@
 </head>
 <body>
 
+	<c:if test="${ not empty erroLogin }">
+		<p style="color:red;">${ erroLogin }</p>
+	</c:if>
+
+	<br/>
+
 	<form action="${ linkLogin }" method="POST">
-		senha: <input name="login" type="text" />
+		Login: <input name="login" type="text" />
 		<br/>
 		Senha: <input name="senha" type="password" />
-		<input type="hidden" value="LoginForm" name="acao"/>
+		<br/>
+		<input type="hidden" value="AutenticarUsuario" name="acao"/>
 		<button type="submit">Cadastrar</button>
 	</form>
 

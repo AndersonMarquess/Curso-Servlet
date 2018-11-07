@@ -2,6 +2,7 @@ package com.andersonmarques.DAO;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import com.andersonmarques.models.Usuario;
 
@@ -15,5 +16,9 @@ public class UsuarioDAO {
 		
 		usuarios.add(u1);
 		usuarios.add(u2);
+	}
+
+	public Optional<Usuario> findUsuarioByCredenciais(String login, String senha) {
+		return usuarios.stream().filter(u -> u.isValido(login, senha)).findFirst();
 	}
 }

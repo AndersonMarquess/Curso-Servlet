@@ -13,11 +13,6 @@ public class LoginForm implements Acao {
 	@Override
 	public String executar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String login = request.getParameter("login");
-		String senha = request.getParameter("senha");
-		
-		System.out.println("Recebido: "+login+" "+senha);
-		
 		return "forward:formLogin.jsp";
 	}
 
