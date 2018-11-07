@@ -5,36 +5,21 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.andersonmarques.DAO.EmpresaDAO;
 import com.andersonmarques.models.Empresa;
+import com.andersonmarques.servlet.Acao;
 
-@WebServlet("/editar")
-public class EditarEmpresa extends HttpServlet{
-	private static final long serialVersionUID = 1L;
+public class EditarEmpresa implements Acao{
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int id = Integer.parseInt(req.getParameter("id"));
-		
-		EmpresaDAO dao = new EmpresaDAO();
-		
-		req.setAttribute("empresa", dao.findEmpresaById(id));
-		RequestDispatcher rd = req.getRequestDispatcher("/formEditarEmpresa.jsp");
-		rd.forward(req, resp);
-	}
-	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int id = Integer.parseInt(req.getParameter("id"));
-		String nome = req.getParameter("nome");
-		String data = req.getParameter("data");
+	public String executar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int id = Integer.parseInt(request.getParameter("id"));
+		String nome = request.getParameter("nome");
+		String data = request.getParameter("data");
 		
 		Empresa emp = new Empresa();
 		emp.setId(id);
@@ -51,6 +36,6 @@ public class EditarEmpresa extends HttpServlet{
 		EmpresaDAO dao = new EmpresaDAO();
 		dao.atualizar(emp);
 
-		resp.sendRedirect("ListarEmpresas");
+		return ":?acao=ListarEmpresas";
 	}
 }

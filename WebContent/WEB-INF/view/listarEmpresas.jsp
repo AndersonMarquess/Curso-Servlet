@@ -4,7 +4,7 @@
 
 <%-- <c:url value="/"/> igual /Curso-Servlet/?acao=RemoverEmpresa --%>
 <c:url value="/" var="linkRemoverEmp"/>
-<c:url value="/editar" var="linkEditarEmp" />
+<c:url value="/?acao=DetalhesEmpresa" var="linkEditarEmp" />
 
 <!DOCTYPE html>
 <html>
@@ -30,7 +30,7 @@
 			<li>
 				${ emp.nome }- <fmt:formatDate value="${ emp.dataAbertura }" pattern="dd/MM/yyyy" />
 				
-				<a href="${ linkEditarEmp }?id=${emp.id}" type="button">Editar</a>
+				<a href="${ linkEditarEmp }&id=${emp.id}" type="button">Editar</a>
 				
 				<form action="${ linkRemoverEmp }" method="post">
 					<input type="hidden" name="acao" value="RemoverEmpresa">
