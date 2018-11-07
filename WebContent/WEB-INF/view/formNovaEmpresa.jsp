@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<%-- <c:url value="/NovaEmpresa"/> igual /Curso-Servlet/NovaEmpresa --%>
-<c:url value="/NovaEmpresa" var="linkNovaEmpresa"/>
+<%-- <c:url value="/"/> igual /Curso-Servlet/?acao=NovaEmpresa --%>
+<c:url value="/" var="linkNovaEmpresa"/>
 
 <!DOCTYPE html>
 <html>
@@ -15,6 +15,7 @@
 		Nome: <input name="nome" type="text" />
 		<br/>
 		Data Abertura: <input name="data" type="text" />
+		<input type="hidden" value="NovaEmpresa" name="acao"/>
 		<button type="submit">Cadastrar</button>
 	</form>
 

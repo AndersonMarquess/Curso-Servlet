@@ -5,24 +5,17 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.andersonmarques.DAO.EmpresaDAO;
 import com.andersonmarques.models.Empresa;
+import com.andersonmarques.servlet.Acao;
 
-/**
- * Servlet implementation class NovaEmpresa
- */
-@WebServlet("/NovaEmpresa")
-public class NovaEmpresa extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+public class NovaEmpresa implements Acao {
 	
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		System.out.println("Fazendo o cadastro de uma nova empresa");
+	public String executar(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		String nomeEmpresa = request.getParameter("nome");
 		String dataAbertura = request.getParameter("data");
 		
@@ -39,7 +32,6 @@ public class NovaEmpresa extends HttpServlet {
 		EmpresaDAO empDAO = new EmpresaDAO();
 		empDAO.adicionar(emp);
 		
-		//Redireciona para o recursos /ListarEmpresas
-		response.sendRedirect("ListarEmpresas");
+		return "redirect:?acao=ListarEmpresas";
 	}
 }

@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<%-- <c:url value="/remover"/> igual /Curso-Servlet/remover --%>
+<%-- <c:url value="/"/> igual /Curso-Servlet/?acao=RemoverEmpresa --%>
 <c:url value="/" var="linkRemoverEmp"/>
 <c:url value="/editar" var="linkEditarEmp" />
 
