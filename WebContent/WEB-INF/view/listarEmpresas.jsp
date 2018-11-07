@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <%-- <c:url value="/remover"/> igual /Curso-Servlet/remover --%>
-<c:url value="/remover" var="linkRemoverEmp"/>
+<c:url value="/" var="linkRemoverEmp"/>
 <c:url value="/editar" var="linkEditarEmp" />
 
 <!DOCTYPE html>
@@ -33,6 +33,7 @@
 				<a href="${ linkEditarEmp }?id=${emp.id}" type="button">Editar</a>
 				
 				<form action="${ linkRemoverEmp }" method="post">
+					<input type="hidden" name="acao" value="RemoverEmpresa">
 					<input type="hidden" name="id" value="${ emp.id }">
 					<button type="submit">Remover</button>
 				</form>

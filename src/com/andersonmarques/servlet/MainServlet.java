@@ -18,8 +18,6 @@ public class MainServlet extends HttpServlet {
 	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Chegou na "+this.getServletName());
-		
 		String acao = request.getParameter("acao");
 		
 		//Instância a classe pelo Full Qualified Name
@@ -37,13 +35,15 @@ public class MainServlet extends HttpServlet {
 		String[] tipoEJsp = result.split(":");
 		
 		String operacao = tipoEJsp[0]; 
-		String jsp = "WEB-INF/view/" + tipoEJsp[1];
+		String endpoint = tipoEJsp[1];
 		
 		if(operacao.equals("forward")) {
-			RequestDispatcher rD = request.getRequestDispatcher(jsp);
+			System.out.println("Forward");
+			RequestDispatcher rD = request.getRequestDispatcher("WEB-INF/view/"+endpoint);
 			rD.forward(request, response);
 		}else {
-			response.sendRedirect(jsp);
+			System.out.println("Redirect");
+			response.sendRedirect(endpoint);
 		}
 	}
 }
