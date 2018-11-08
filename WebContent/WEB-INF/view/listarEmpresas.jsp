@@ -13,6 +13,11 @@
 <title>JavaServer Pages Standard Tag Library</title>
 </head>
 <body>
+	<!-- Importa a página -->
+	<c:import url="fragmento-logout.jsp"/>
+
+
+
 	<c:if test="${ not empty nomeEmpresa }">
 		<label>Cadastro da empresa: ${ nomeEmpresa } efetuado com sucesso.</label>
 	</c:if>

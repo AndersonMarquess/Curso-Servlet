@@ -22,7 +22,7 @@
 		Senha: <input name="senha" type="password" />
 		<br/>
 		<input type="hidden" value="AutenticarUsuario" name="acao"/>
-		<button type="submit">Cadastrar</button>
+		<button type="submit">Entrar</button>
 	</form>
 
 </body>

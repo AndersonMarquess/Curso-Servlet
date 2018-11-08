@@ -1,0 +1,25 @@
+package com.andersonmarques.controllers;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.andersonmarques.servlet.Acao;
+
+public class Logout implements Acao {
+
+	@Override
+	public String executar(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		HttpSession sessao = request.getSession();
+		//Remove a sessão e inválida o cookie
+		sessao.invalidate();
+
+		return "redirect:?acao=LoginForm";
+	}
+
+}
