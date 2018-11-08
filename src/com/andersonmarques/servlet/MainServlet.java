@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class MainServlet
@@ -19,6 +20,15 @@ public class MainServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String acao = request.getParameter("acao");
+		
+		HttpSession sessao = request.getSession();
+		boolean isUsuarioNaoAutenticado = (sessao.getAttribute("usuarioLogado") == null);
+		boolean isEndpointProtegido = !(acao.equals("LoginForm") || acao.equals("AutenticarUsuario"));
+		if(isUsuarioNaoAutenticado && isEndpointProtegido) {
+			response.sendRedirect("?acao=LoginForm");
+			return;
+		}
+		
 		
 		//Instância a classe pelo Full Qualified Name
 		String nomeDaClasse = "com.andersonmarques.controllers."+acao;
@@ -38,11 +48,9 @@ public class MainServlet extends HttpServlet {
 		String endpoint = tipoEJsp[1];
 		
 		if(operacao.equals("forward")) {
-			System.out.println("Forward");
 			RequestDispatcher rD = request.getRequestDispatcher("WEB-INF/view/"+endpoint);
 			rD.forward(request, response);
 		}else {
-			System.out.println("Redirect");
 			response.sendRedirect(endpoint);
 		}
 	}

@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.andersonmarques.DAO.UsuarioDAO;
 import com.andersonmarques.models.Usuario;
@@ -29,8 +30,9 @@ public class AutenticarUsuario implements Acao {
 			return "forward:formLogin.jsp";
 		}
 		
-		System.out.println("Usuário válido.");
+		HttpSession sessao = request.getSession();
+		sessao.setAttribute("usuarioLogado", usuario.get());
+		
 		return "redirect:?acao=ListarEmpresas";
 	}
-
 }
