@@ -1,4 +1,4 @@
-package com.andersonmarques.servlet;
+package com.andersonmarques.controllers;
 
 import java.io.IOException;
 

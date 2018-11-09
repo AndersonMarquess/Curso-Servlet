@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.andersonmarques.DAO.EmpresaDAO;
 import com.andersonmarques.models.Empresa;
-import com.andersonmarques.servlet.Acao;
 
 public class NovaEmpresa implements Acao {
 	

@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.andersonmarques.DAO.EmpresaDAO;
-import com.andersonmarques.servlet.Acao;
 
 public class RemoverEmpresa implements Acao {
 

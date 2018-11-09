@@ -9,6 +9,7 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <!-- Mapeamento manual da Servlet -->
   <servlet>
     <servlet-name>OiMundo</servlet-name>
     <servlet-class>com.andersonmarques.controllers.OiMundo</servlet-class>
@@ -17,7 +18,39 @@
     <servlet-name>OiMundo</servlet-name>
     <url-pattern>/oiXML</url-pattern>
   </servlet-mapping>
+  
+  <!-- Alteração no tempo máximo de inatividade, antes de invalidar a sessão. -->
   <session-config>
     <session-timeout>60</session-timeout>
   </session-config>
+  
+  <!-- Definir e mapear ordem de execução dos filtros. -->
+  <!-- 1ª Filtro -->
+  <filter>
+	  <filter-name>Monitoramento</filter-name>
+	  <filter-class>com.andersonmarques.filtros.Monitoramento</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>Monitoramento</filter-name>
+  	<url-pattern>/</url-pattern>
+  </filter-mapping>
+  <!-- 2ª Filtro -->
+  <filter>
+	  <filter-name>Autorizacao</filter-name>
+	  <filter-class>com.andersonmarques.filtros.Autorizacao</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>Autorizacao</filter-name>
+  	<url-pattern>/</url-pattern>
+  </filter-mapping>
+  <!-- 3ª Filtro -->
+  <filter>
+	  <filter-name>MainFilter</filter-name>
+	  <filter-class>com.andersonmarques.filtros.MainFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>MainFilter</filter-name>
+  	<url-pattern>/</url-pattern>
+  </filter-mapping>
+  
 </web-app>

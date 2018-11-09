@@ -10,7 +10,6 @@ import javax.servlet.http.HttpSession;
 
 import com.andersonmarques.DAO.UsuarioDAO;
 import com.andersonmarques.models.Usuario;
-import com.andersonmarques.servlet.Acao;
 
 public class AutenticarUsuario implements Acao {
 
