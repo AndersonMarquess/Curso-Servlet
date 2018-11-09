@@ -17,10 +17,7 @@
     <servlet-name>OiMundo</servlet-name>
     <url-pattern>/oiXML</url-pattern>
   </servlet-mapping>
-  
-  <!-- Configura o tempo máximo de vida de uma sessão sem novas requisições -->
   <session-config>
-    <!-- permite 60 minutos de invatividade antes de remover. -->
     <session-timeout>60</session-timeout>
-</session-config>
+  </session-config>
 </web-app>
